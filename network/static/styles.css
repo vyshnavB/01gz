@@ -523,7 +523,7 @@ margin-left: -55px;
 }
 .post-actions .post-functions{
     display: flex;
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: 13px; 
     font-weight: 600;
    
@@ -531,8 +531,8 @@ margin-left: -55px;
 .post-functions p{
     font-size: 13px;
 }
-.post-actions .views{
-
+.likes_count{
+    padding-top: 5px;
 }
 .post-actions > div{
 

@@ -298,7 +298,7 @@ def article_list_by_tag(request, tag):
         followings = intrest_followers.objects.filter(following_user=request.user).values_list('topic', flat=True)
         intrests = intrest.objects.exclude(pk__in=followings).exclude().order_by("?")[:6]
     context = {
-        'post': post,
+        'posts': post,
         'tag': tag,
         "suggestions": suggestions,
         "intrests":intrests,
@@ -1826,7 +1826,7 @@ def post_comment(request,pk):
 
     
     context = {
-        'post'  : post, 
+        'posts'  : post, 
         'comment':comment,
         "suggestions":suggestions,
         "intrests":intrests
