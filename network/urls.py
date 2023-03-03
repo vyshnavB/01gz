@@ -114,7 +114,7 @@ urlpatterns = [
     path('wishlis/<int:pk>',views.wishlis,name='wishlis'),
     path('add_to_wish/<int:pk>',views.add_to_wish,name='add_to_wish'),
     path('delete_wishlist/<int:pk>',views.delete_wishlist,name='delete_wishlist'),
-
+    path('reviews/<int:pk>',views.reviews,name='reviews'),
 
 
 

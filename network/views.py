@@ -890,8 +890,12 @@ def show_all(request):
 @login_required(login_url='login')
 def product_detail(request,id):
     product=Post.objects.filter(id=id)
+    rew=review.objects.filter(post__id=id)
     crt=Cart.objects.filter(user=request.user)
     crt_count = crt.count()
+
+
+    
 
     sub_total= 0 
     grand_total = 0
@@ -907,9 +911,23 @@ def product_detail(request,id):
         'sub_total' : sub_total,
         'shipping'  : shipping,
         'grand_total' : grand_total,
+        "rew":rew,
+        "rew_count":rew.count()
     }
 
-    return render(request,'product-detail.html',context) 
+    return render(request,'product-detail.html',context)
+
+
+@csrf_exempt
+def reviews(request,userid):
+    post=Post.objects.get(id=userid)
+    reviewer=request.user
+    reviewz= request.POST.get('reviewz')
+    mail = request.POST.get('mail')
+    rating =request.POST.get('rating')
+    rev = review (post=post,reviewer=reviewer,reviewz=reviewz,mail=mail,rating=rating)
+    rev.save()
+    return redirect("product_detail",userid)
 
 
 

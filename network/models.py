@@ -316,6 +316,13 @@ class intrest_followers(models.Model):
     following_user=models.ForeignKey(User,related_name='intr',on_delete=models.CASCADE,blank=True,default=True)
     topic=models.ForeignKey(intrest,on_delete=models.CASCADE,default=True,related_name='top',blank=True)
 
+class review(models.Model):
+    reviewz=models.CharField(max_length=255,blank=True,null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='reviewposst',default=True,blank=True,null=True)
+    reviewer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviewer',default=True,blank=True,null=True)
+    mail=models.EmailField(max_length=255,blank=True,null=True)
+    rating=models.IntegerField(max_length=255,blank=True,null=True)
+    review_time = models.DateTimeField(default=timezone.now)
     
 
 
